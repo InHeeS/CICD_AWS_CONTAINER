@@ -44,6 +44,14 @@ public class ProductController {
                 page -1, size, sortBy, isAsc);
     }
 
+    @PostMapping("/products/{productId}/folder")
+    public void addOlder(@PathVariable Long productId,
+                         @RequestParam Long folderId,
+                         @AuthenticationPrincipal UserDetailsImpl userDetails
+                         ){
+        productService.addFolder(productId, folderId, userDetails.getUser());
+    }
+
 //    // admin 조회
 //    @GetMapping("/admin/products")
 //    public List<ProductResponseDto> getAllProducts(){

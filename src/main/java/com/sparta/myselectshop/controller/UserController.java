@@ -80,6 +80,8 @@ public class UserController {
 
     @GetMapping("/user/kakao/callback")
     public String kakaoLogin(@RequestParam String code, HttpServletResponse response) throws JsonProcessingException {
+        // 인가 코드 @RequestParam 으로 받는다.
+        // 직접 쿠키를 생성해서 jwt 를 넣는다.
         String token = kakaoService.kakaoLogin(code);
 
         // Cookie 직접 생성
